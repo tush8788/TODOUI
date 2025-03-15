@@ -5,7 +5,7 @@ import Dashboard from "../../../views/Dashboard"
 
 export const ProtectedPaths = [
     {
-        path:'home',
+        path:'/',
         component:Dashboard
     }
 ] 
