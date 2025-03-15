@@ -1,7 +1,8 @@
 import { Navigate, Outlet } from "react-router-dom";
+import useAuth from "../../utils/hooks/useAuth";
 
 const UnProtectedLayout = () =>{
-    const authenticated = false;
-    return !authenticated ? <Outlet/> : <Navigate to={'/home'}/>
+    const {authenticate} = useAuth();
+    return !authenticate ? <Outlet/> : <Navigate to={'/home'}/>
 }
 export default UnProtectedLayout
