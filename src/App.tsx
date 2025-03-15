@@ -1,10 +1,12 @@
+import { BrowserRouter } from 'react-router-dom'
+import Navigation from './component/layouts/routes/Navigation'
 function App() {
 
   return (
     <>
-    <div className="bg-red-50">
-      dafkjsnjn
-    </div>
+    <BrowserRouter>
+      <Navigation/>
+    </BrowserRouter>
     </>
   )
 }
