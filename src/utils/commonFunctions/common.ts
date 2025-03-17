@@ -15,4 +15,9 @@ export const getUserInfoFromLocalStoreage = () => {
         userInfo = JSON.parse(userInfo)
         return userInfo || null;
     }
+    return null
+}
+
+export const clearUserInfoFromLocalStroage = () => {
+    localStorage.removeItem('userInfo')
 }

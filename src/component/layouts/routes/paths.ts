@@ -7,10 +7,6 @@ export const ProtectedPaths = [
     {
         path:'/',
         component:Dashboard
-    },
-    {
-        path:'/home',
-        component:Dashboard
     }
 ] 
 

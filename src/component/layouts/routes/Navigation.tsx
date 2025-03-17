@@ -2,13 +2,14 @@ import { Route, Routes } from "react-router-dom"
 import { ProtectedPaths, UnProtectedPaths } from "./paths"
 import UnProtectedLayout from "../UnProtectedLayout"
 import ProtectedLayout from "../ProtectedLayout"
+import RootLayout from "../RootLayout"
 
 const Navigation = () => {
 
     return (
         <>
             <Routes>
-                <Route path="/">
+                <Route path="/" element={<RootLayout/>}>
                     {/* protected paths */}
                     <Route element={<ProtectedLayout />}>
                         {ProtectedPaths.map((route, index) => (
