@@ -16,7 +16,16 @@ const signUpApi = async (data:any)=>{
     })
 }
 
+const googleVerify = async (data:any) => {
+    return fetchData({
+        url:'user/google-verify',
+        method:'post',
+        data
+    })
+}
+
 export {
     signInApi,
-    signUpApi
+    signUpApi,
+    googleVerify
 }
