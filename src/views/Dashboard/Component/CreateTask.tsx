@@ -1,6 +1,6 @@
 import { Form, Checkbox, Radio, Input, Select, TreeSelect, Cascader, DatePicker, InputNumber, Switch, Upload, Button, Slider, ColorPicker, Rate, message } from "antd"
 import TextArea from "antd/es/input/TextArea"
-import { PlusOutlined } from '@ant-design/icons';
+import { PlusOutlined, UploadOutlined } from '@ant-design/icons';
 import { createTask } from "../../../services/TaskService";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { updateTask } from "../../../store/slice/taskSlice";
@@ -15,8 +15,18 @@ const CreateTask = () => {
 
     const onSubmit = async (values: any) => {
         try {
-            console.log("val ", values)
-            let resp: any = await createTask({ name: values.name, desc: values.desc, url: '' })
+            const file = values.file?.[0]?.originFileObj; // Extract file from form data
+            if (!file) {
+                message.error("Please upload a file!");
+                return;
+            }
+            const formData = new FormData();
+            formData.append("name", values.name);
+            formData.append("desc", values.desc);
+            formData.append("file", file);
+
+            let resp: any = await createTask(formData)
+            // let resp: any = await createTask({ name: values.name, desc: values.desc, url: '' })
             console.log("task ", resp)
             let cloneTasks = cloneDeep(task)
             cloneTasks.push(resp.data);
@@ -31,16 +41,6 @@ const CreateTask = () => {
         }
     }
 
-    const normFile = (e: any) => {
-        console.log(e)
-
-        if (Array.isArray(e)) {
-            return e;
-        }
-        return e?.fileList;
-    };
-
-
     return (
         <>
             {contextHolder}
@@ -51,34 +51,30 @@ const CreateTask = () => {
                 initialValues={{
                     name: '',
                     desc: '',
-                    url: ''
+                    file: null
                 }}
                 layout="horizontal"
                 style={{ maxWidth: 600 }}
             >
-                <Form.Item name={'name'} label="Input">
+                <Form.Item
+                    rules={[{ required: true, message: "This field is required" }]}
+                    name={'name'} label="Input">
                     <Input />
                 </Form.Item>
-                <Form.Item label="TextArea" name={'desc'}>
+                <Form.Item
+                    rules={[{ required: true, message: "This field is required" }]}
+                    label="TextArea" name={'desc'}>
                     <TextArea rows={4} />
                 </Form.Item>
-                {/* <Form.Item label="Upload" name={'url'} valuePropName="fileList" getValueFromEvent={normFile}>
-                <Upload 
-                    maxCount={1}
-                    beforeUpload={(file) => {
-                        console.log(file)
-                    }}
-                    listType="picture-card"
-                >
-                    <button
-                        style={{ color: 'inherit', cursor: 'inherit', border: 0, background: 'none' }}
-                        type="button"
-                    >
-                        <PlusOutlined />
-                        <div style={{ marginTop: 8 }}>Upload</div>
-                    </button>
-                </Upload>
-            </Form.Item> */}
+
+                <Form.Item
+                    rules={[{ required: true, message: "This field is required" }]}
+                    required label="Upload File" name="file" valuePropName="fileList" getValueFromEvent={(e) => e?.fileList}>
+                    <Upload beforeUpload={() => false} maxCount={1} listType="text">
+                        <Button icon={<UploadOutlined />}>Click to Upload</Button>
+                    </Upload>
+                </Form.Item>
+
                 <Form.Item label={null}>
                     <Button type="primary" htmlType="submit">
                         Add Task

@@ -3,6 +3,7 @@ import { ProtectedPaths, UnProtectedPaths } from "./paths"
 import UnProtectedLayout from "../UnProtectedLayout"
 import ProtectedLayout from "../ProtectedLayout"
 import RootLayout from "../RootLayout"
+import React from "react"
 
 const Navigation = () => {
 
@@ -38,4 +39,4 @@ const Navigation = () => {
     )
 }
 
-export default Navigation
+export default React.memo(Navigation)

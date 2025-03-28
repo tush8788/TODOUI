@@ -14,9 +14,6 @@ const useAuth = () => {
 
     const dispatch = useAppDispatch();
 
-    useEffect(()=>{
-        checkAuthenticated()
-    },[])
 
     const checkAuthenticated = () => {
         if(!isEmpty(token)) return
@@ -38,6 +35,7 @@ const useAuth = () => {
 
     return {
         authenticate: isEmpty(token) ? false : true,
+        checkAuthenticated,
         signIn,
         signOut
     }
