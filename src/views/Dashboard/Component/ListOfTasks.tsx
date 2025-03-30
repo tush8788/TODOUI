@@ -21,12 +21,13 @@ const ListOfTasks = () => {
         <div className="mx-3">
         <div className="flex gap-2 flex-wrap">
             {task.length > 0 && task?.map((t: any) => {
+                console.log("task",task)
                 return (
                     <Card
                         key={t._id}
                         hoverable
                         style={{ width: 240 }}
-                        // cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}
+                        cover={<img alt="example" src={t.url ||"https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"} />}
                         actions={[
                             
                             <SettingOutlined key="setting" />,

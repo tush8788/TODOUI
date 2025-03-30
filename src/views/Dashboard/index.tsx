@@ -3,14 +3,14 @@ import CreateTask from "./Component/CreateTask"
 import ListOfTasks from "./Component/ListOfTasks"
 
 const Dashboard = () => {
-    useEffect(()=>{
+    useEffect(() => {
         console.log("render")
-    },[])
-    return(
+    }, [])
+
+    return (
         <div>
-            Dashboard
-            <CreateTask/>
-            <ListOfTasks/>
+            <CreateTask />
+            <ListOfTasks />
         </div>
     )
 }
