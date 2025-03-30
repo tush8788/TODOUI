@@ -33,9 +33,9 @@ const taskSlice = createSlice({
             state.task = action.payload || []
             console.log("action payload",action.payload);
             state.status = false
-        }).addCase(fetchTaskList.pending, (state, action) => {
+        }).addCase(fetchTaskList.pending, (state) => {
             state.status = true
-        }).addCase(fetchTaskList.rejected, (state, action) => {
+        }).addCase(fetchTaskList.rejected, (state) => {
             state.status = false
         })
     }

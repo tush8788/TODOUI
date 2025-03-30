@@ -1,7 +1,6 @@
 import { isEmpty } from "lodash"
 import { useAppDispatch, useAppSelector } from "../../store/hooks"
 import { updateUser } from "../../store/slice/userSlice"
-import { useEffect } from "react"
 import { getUserInfoFromLocalStoreage } from "../commonFunctions/common"
 
 type userInfo = {

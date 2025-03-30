@@ -1,7 +1,6 @@
 import { Button, Form, FormProps, Input } from 'antd';
 import { signUpApi } from '../../services/AuthService';
 import { useNavigate } from 'react-router-dom';
-import { GoogleLogin } from '@react-oauth/google';
 import GoogleAuth from './GoogleAuth';
 
 type FieldType = {
@@ -14,7 +13,7 @@ const Signup = () => {
     const navigate = useNavigate()
     const onSubmit: FormProps<FieldType>['onFinish'] = async (values: FieldType) => {
         try {
-            let resp: any = await signUpApi(values)
+            await signUpApi(values)
             navigate('/signin')
         } catch (err) {
             console.log("err", err)

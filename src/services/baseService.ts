@@ -1,6 +1,5 @@
 import axios from "axios";
 import { config } from "../config";
-import useAuth from "../utils/hooks/useAuth";
 import { store } from "../store/store";
 import { updateUser } from "../store/slice/userSlice";
 import { clearUserInfoFromLocalStroage, getUserInfoFromLocalStoreage } from "../utils/commonFunctions/common";

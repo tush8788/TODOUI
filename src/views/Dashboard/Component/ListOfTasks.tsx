@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from "../../../store/hooks"
 import { fetchTaskList, updateTask } from "../../../store/slice/taskSlice"
 import { Card } from "antd"
 import Meta from "antd/es/card/Meta"
-import { DeleteOutlined, EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
+import { DeleteOutlined, EditOutlined, SettingOutlined } from '@ant-design/icons';
 import { deleteTask } from "../../../services/TaskService"
 import { cloneDeep } from "lodash"
 

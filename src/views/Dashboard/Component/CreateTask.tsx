@@ -1,17 +1,17 @@
-import { Form, Checkbox, Radio, Input, Select, TreeSelect, Cascader, DatePicker, InputNumber, Switch, Upload, Button, Slider, ColorPicker, Rate, message, Modal } from "antd"
+import { Form, Input, Upload, Button, message, Modal } from "antd"
 import TextArea from "antd/es/input/TextArea"
-import { PlusOutlined, UploadOutlined } from '@ant-design/icons';
+import { UploadOutlined } from '@ant-design/icons';
 import { createTask } from "../../../services/TaskService";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { updateTask } from "../../../store/slice/taskSlice";
-import { cloneDeep, values } from "lodash";
+import { cloneDeep } from "lodash";
 import { useState } from "react";
 
 
 const CreateTask = () => {
     const dispatch = useAppDispatch();
     const [isModalOpen, setIsModalOpen] = useState(false)
-    const { task, status } = useAppSelector((state) => state.tasks)
+    const { task } = useAppSelector((state) => state.tasks)
     const [messageApi, contextHolder] = message.useMessage();
     const [isLoading,setIsLoading] = useState(false)
     const [form] = Form.useForm();

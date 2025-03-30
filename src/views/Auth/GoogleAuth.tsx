@@ -15,8 +15,8 @@ const GoogleAuth = () => {
             console.log(err);
         }        
     };
-    const errorMessage = (error:any) => {
-        console.log(error);
+    const errorMessage = () => {
+        console.log("error in google auth");
     };
 
     return(
